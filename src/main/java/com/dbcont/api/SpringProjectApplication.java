@@ -1,43 +1,46 @@
 package com.dbcont.api;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-
-import com.dbcont.api.utils.SenhaUtils;
 
 @SpringBootApplication
 public class SpringProjectApplication {
 
-	@Value("${paginacao.qtd_por_pagina}")
-	private int qtdPorPagina;
+
+//	@Autowired
+//	private EmpresaRepository empresaRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringProjectApplication.class, args);
 	}
 
-	@Bean
-	public CommandLineRunner commandLineRunner() {
-		return args -> {
-			String senhaEncode = SenhaUtils.gerarBCrypt("123456");
-			System.out.println("Senha Encoded: " + senhaEncode);
-
-			senhaEncode = SenhaUtils.gerarBCrypt("123456");
-			System.out.println("Senha encoded novamente: " + senhaEncode);
-			
-			boolean senhaVerdadeira = SenhaUtils.senhaValida("123456", senhaEncode);
-
-			if (senhaVerdadeira) {
-
-				System.out.println("Senha Válida: " + SenhaUtils.CONST_TRUE);
-
-			} else {
-
-				System.out.println("Senha Válida: " + SenhaUtils.CONST_FALSE);
-			}
-		};
-	}
-
+//	@Bean
+//	public CommandLineRunner commandLineRunner() {
+//		return args -> {
+//			
+//			Empresa empresa = new Empresa();
+//			empresa.setRazaoSocial("TI TEC");
+//			empresa.setCnpj("10312731000126");
+//			
+//			this.empresaRepository.save(empresa);
+//			
+//			List<Empresa> empresas = empresaRepository.findAll();
+//			empresas.forEach(System.out::println);
+//			
+//			Optional<Empresa> empresaDb = empresaRepository.findById(1L);
+//			System.out.println("Empresa por ID: " + empresaDb);
+//			
+//			empresaDb.get().setRazaoSocial("TI TI");
+//			this.empresaRepository.save(empresaDb.get());
+//			
+//			Empresa empresaCnpj = empresaRepository.findByCnpj("10312731000126");
+//			System.out.println("Empresa por CNPJ: " + empresaCnpj);
+//			
+//			this.empresaRepository.deleteById(1L);
+//			empresas = empresaRepository.findAll();
+//			System.out.println("Empresas: " + empresas.size());
+//			
+//		};
+//	}
 }
+	
